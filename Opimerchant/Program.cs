@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Opimerchant.Data;
+
 namespace Opimerchant
 {
     public class Program
@@ -8,6 +11,8 @@ namespace Opimerchant
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<OpimerchantDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
